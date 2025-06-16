@@ -87,6 +87,10 @@ export default function StudioSections() {
           loop
           muted
           playsInline
+          preload="auto"
+          controls={false}
+          disablePictureInPicture
+          disableRemotePlayback
         />
         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60 z-10" />
         {/* Optionnel : <div className="relative z-20 text-white text-2xl md:text-4xl font-bold">Votre slogan ici</div> */}

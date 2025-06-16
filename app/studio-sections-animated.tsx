@@ -41,7 +41,7 @@ const sections = [
     text: "Prise de voix professionnelle, nettoyage, mixage broadcast-ready. Documentaires, publicités, e-learning ou doublage.",
     images: [
       {
-        src: "/img/voixOff.png",
+        src: "/img/voixoff.png",
         alt: "Voice recording booth",
       },
     ],
@@ -92,7 +92,7 @@ export default function StudioSections() {
         {/* Optionnel : <div className="relative z-20 text-white text-2xl md:text-4xl font-bold">Votre slogan ici</div> */}
       </header>
 
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-8 md:mb-12">
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-24 mt-24 md:mb-24 md:mt-24">
         Découvrez notre univers
       </h2>
 

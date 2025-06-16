@@ -1,0 +1,157 @@
+"use client";
+import { motion } from "framer-motion";
+import Image from "next/image";
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
+  },
+};
+
+const sections = [
+  {
+    title: "Sound Design / Game",
+    text: "Ambiances immersives, bruitages percussifs, mixage précis pour une expérience sonore unique. Nous collaborons avec des studios de jeu pour créer des paysages sonores mémorables.",
+    images: [
+      {
+        src: "/img/tycoon.png",
+        alt: "Game studio interior for sound design",
+      },
+      {
+        src: "/placeholder.svg?width=400&height=300",
+        alt: "Audio mixing console for sound design",
+      },
+    ],
+  },
+  {
+    title: "Production Musicale",
+    text: "Arrangements, mixage, mastering analogique. Des maquettes aux morceaux finalisés, nous accompagnons les artistes dans leur vision musicale.",
+    images: [
+      {
+        src: "/placeholder.svg?width=400&height=300",
+        alt: "Musician composing music in a studio",
+      },
+      {
+        src: "/placeholder.svg?width=400&height=300",
+        alt: "Beatmaker working on an MPC",
+      },
+    ],
+  },
+  {
+    title: "Voix Off / TV",
+    text: "Prise de voix professionnelle, nettoyage, mixage broadcast-ready. Documentaires, publicités, e-learning ou doublage.",
+    images: [
+      {
+        src: "/placeholder.svg?width=400&height=300",
+        alt: "Voice recording booth",
+      },
+      {
+        src: "/placeholder.svg?width=400&height=300",
+        alt: "Close up of a studio microphone",
+      },
+    ],
+  },
+  {
+    title: "Composition",
+    text: "Musique sur-mesure pour film, publicité ou marque. Création émotionnelle, direction artistique adaptée à chaque message.",
+    images: [
+      {
+        src: "/placeholder.svg?width=400&height=300",
+        alt: "Composer's desk with equipment",
+      },
+      {
+        src: "/placeholder.svg?width=400&height=300",
+        alt: "Music score sheet",
+      },
+    ],
+  },
+  {
+    title: "Mastering",
+    text: "Optimisation finale de vos projets. Équilibre, volume, spatialisation : un rendu professionnel, prêt à la diffusion.",
+    images: [
+      {
+        src: "/img/mastering-eq.png",
+        alt: "Mastering equalizer plugin interface",
+      },
+      {
+        src: "/placeholder.svg?width=400&height=300",
+        alt: "Audio spectrum analyzer display",
+      },
+    ],
+  },
+];
+
+export default function StudioSections() {
+  return (
+    <section className="bg-[#121212] text-white py-12 md:py-16 px-4 sm:px-6 md:px-16">
+      <h1 className="text-white text-4xl md:text-6xl font-semibold text-center mb-2 md:mb-3 pt-4 md:pt-6 pb-2 md:pb-3">
+        Studio Couleur de son
+      </h1>
+      <p className="text-gray-300 text-center text-lg md:text-xl">
+        Production musicale - Mixage sonore - Mastering - Composition - Voix off
+      </p>
+
+      {/* Header with background video */}
+      <header className="relative w-full h-[240px] md:h-[360px] flex items-center justify-center mt-8 mb-8 md:mt-12 md:mb-12 overflow-hidden rounded-xl">
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+          src="/videoStudio.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60 z-10" />
+        {/* Optionnel : <div className="relative z-20 text-white text-2xl md:text-4xl font-bold">Votre slogan ici</div> */}
+      </header>
+
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-8 md:mb-12">
+        Découvrez notre univers
+      </h2>
+
+      {sections.map((section, index) => (
+        <motion.div
+          key={section.title}
+          className={`flex flex-col md:flex-row items-center gap-8 md:gap-12 ${
+            index % 2 === 1 ? "md:flex-row-reverse" : ""
+          } ${index === 0 ? "mt-8 md:mt-12" : "mt-12 md:mt-20"}`}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.5, ease: "easeOut" },
+            },
+          }}
+        >
+          <div className="md:w-1/2 space-y-4 md:space-y-6 text-center md:text-left">
+            <h2 className="text-3xl md:text-5xl font-light">{section.title}</h2>
+            <p className="text-base md:text-lg text-gray-300">{section.text}</p>
+            <button className="border border-[#d4af37] text-[#d4af37] px-6 py-2 hover:bg-[#d4af37] hover:text-black transition rounded-md text-sm md:text-base">
+              En savoir +
+            </button>
+          </div>
+          <div className="md:w-1/2 flex items-center justify-center">
+            {section.images[0] && (
+              <div className="relative w-full aspect-video bg-[#121212]">
+                <Image
+                  src={section.images[0].src || "/placeholder.svg"}
+                  alt={section.images[0].alt}
+                  fill
+                  className="rounded-lg shadow-lg object-cover"
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                />
+              </div>
+            )}
+          </div>
+        </motion.div>
+      ))}
+    </section>
+  );
+}

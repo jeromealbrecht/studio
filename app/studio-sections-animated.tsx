@@ -34,10 +34,6 @@ const sections = [
         src: "/img/production.jpeg",
         alt: "Musician composing music in a studio",
       },
-      {
-        src: "/placeholder.svg?width=400&height=300",
-        alt: "Beatmaker working on an MPC",
-      },
     ],
   },
   {
@@ -47,10 +43,6 @@ const sections = [
       {
         src: "/img/voixOff.png",
         alt: "Voice recording booth",
-      },
-      {
-        src: "/placeholder.svg?width=400&height=300",
-        alt: "Close up of a studio microphone",
       },
     ],
   },
@@ -62,10 +54,6 @@ const sections = [
         src: "/img/composition.jpg",
         alt: "Composer's desk with equipment",
       },
-      {
-        src: "/placeholder.svg?width=400&height=300",
-        alt: "Music score sheet",
-      },
     ],
   },
   {
@@ -75,10 +63,6 @@ const sections = [
       {
         src: "/img/mastering-eq.png",
         alt: "Mastering equalizer plugin interface",
-      },
-      {
-        src: "/placeholder.svg?width=400&height=300",
-        alt: "Audio spectrum analyzer display",
       },
     ],
   },

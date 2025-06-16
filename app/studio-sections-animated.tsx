@@ -31,7 +31,7 @@ const sections = [
     text: "Arrangements, mixage, mastering analogique. Des maquettes aux morceaux finalisés, nous accompagnons les artistes dans leur vision musicale.",
     images: [
       {
-        src: "/placeholder.svg?width=400&height=300",
+        src: "/img/production.jpeg",
         alt: "Musician composing music in a studio",
       },
       {
@@ -45,7 +45,7 @@ const sections = [
     text: "Prise de voix professionnelle, nettoyage, mixage broadcast-ready. Documentaires, publicités, e-learning ou doublage.",
     images: [
       {
-        src: "/placeholder.svg?width=400&height=300",
+        src: "/img/voixOff.png",
         alt: "Voice recording booth",
       },
       {
@@ -59,7 +59,7 @@ const sections = [
     text: "Musique sur-mesure pour film, publicité ou marque. Création émotionnelle, direction artistique adaptée à chaque message.",
     images: [
       {
-        src: "/placeholder.svg?width=400&height=300",
+        src: "/img/composition.jpg",
         alt: "Composer's desk with equipment",
       },
       {

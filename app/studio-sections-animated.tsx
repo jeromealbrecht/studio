@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-
+import JeromeSpecialSection from "./jerome-special-section";
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
   visible: {
@@ -140,6 +140,7 @@ export default function StudioSections() {
           </div>
         </motion.div>
       ))}
+      <JeromeSpecialSection />
     </section>
   );
 }

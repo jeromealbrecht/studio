@@ -2,14 +2,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import JeromeSpecialSection from "./jerome-special-section";
-const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
-  },
-};
 
 const sections = [
   {
@@ -119,9 +111,14 @@ export default function StudioSections() {
           }}
         >
           <div className="md:w-1/2 space-y-4 md:space-y-6 text-center md:text-left">
-            <h2 className="text-3xl md:text-5xl font-light">{section.title}</h2>
+            <h2
+              className="text-3xl md:text-5xl font-light"
+              style={{ color: "#D4AF37" }}
+            >
+              {section.title}
+            </h2>
             <p className="text-base md:text-lg text-gray-300">{section.text}</p>
-            <button className="border border-[#d4af37] text-[#d4af37] px-6 py-2 hover:bg-[#d4af37] hover:text-black transition rounded-md text-sm md:text-base">
+            <button className="border border-[#D4AF37] text-[#D4AF37] px-6 py-2 hover:bg-[#D4AF37] hover:text-white transition rounded-md text-sm md:text-base">
               En savoir +
             </button>
           </div>

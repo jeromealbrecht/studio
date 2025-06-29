@@ -4,53 +4,25 @@ import { motion } from "framer-motion";
 import { CheckCircle, Mic, Settings, Zap } from "lucide-react";
 import Image from "next/image";
 
-const cabineFeatures = [
-  {
-    id: 1,
-    icon: Mic,
-    title: "Acoustique soignée",
-    subtitle: "Un espace adapté",
-    paragraph:
-      "La cabine a été aménagée avec attention pour limiter les résonances et offrir de bonnes conditions d'enregistrement, sans prétention.",
-    bulletPoints: [
-      "Traitement acoustique simple et efficace",
-      "Isolement correct pour la plupart des projets",
-      "Ambiance calme et détendue",
-    ],
-  },
-  {
-    id: 2,
-    icon: Settings,
-    title: "Équipement accessible",
-    subtitle: "Des outils pour s'adapter",
-    paragraph:
-      "Nous mettons à disposition plusieurs micros et préamplis, choisis pour leur polyvalence et leur fiabilité, afin de s'adapter à chaque voix ou instrument.",
-    bulletPoints: [
-      "Sony C-80 + SSL VHD PRE",
-      "AT 4040, AT 2020, Aston Element",
-      "Monitoring Dynaudio simple et précis",
-    ],
-  },
-  {
-    id: 3,
-    icon: Zap,
-    title: "Confort & simplicité",
-    subtitle: "Un lieu à taille humaine",
-    paragraph:
-      "L'espace est pensé pour que chacun se sente à l'aise, sans chichi, que ce soit pour une courte prise ou une session plus longue.",
-    bulletPoints: [
-      "Éclairage doux et modulable",
-      "Ventilation discrète",
-      "Accueil chaleureux",
-    ],
-  },
-];
+const cabineFeature = {
+  icon: Settings,
+  title: "Notre équipement",
+  subtitle: "Des outils fiables et adaptés à vos projets",
+  paragraph:
+    "Nous mettons à disposition plusieurs micros et préamplis, choisis pour leur polyvalence et leur fiabilité, afin de s'adapter à chaque voix ou instrument. Le monitoring Dynaudio permet un contrôle précis du rendu sonore. L'espace est pensé pour que chacun se sente à l'aise, sans chichi, dans une ambiance simple et accueillante.",
+  bulletPoints: [
+    "Sony C-80 + SSL VHD PRE",
+    "AT 4040, AT 2020, Aston Element",
+    "Monitoring Dynaudio",
+    "Chaîne de signal simple et efficace",
+  ],
+};
 
-const FeatureCard = ({ item }: { item: (typeof cabineFeatures)[0] }) => {
+const FeatureCard = ({ item }: { item: typeof cabineFeature }) => {
   const Icon = item.icon;
   return (
     <motion.div
-      className="bg-zinc-800 p-6 md:p-8 rounded-xl shadow-lg flex flex-col h-full border border-zinc-700 hover:border-zinc-600 transition-colors duration-300"
+      className="bg-zinc-800 p-8 md:p-12 rounded-2xl shadow-lg flex flex-col max-w-full w-full border border-zinc-700 hover:border-zinc-600 transition-colors duration-300 mx-auto"
       whileHover={{
         y: -6,
         scale: 1.03,
@@ -58,28 +30,30 @@ const FeatureCard = ({ item }: { item: (typeof cabineFeatures)[0] }) => {
       }}
       transition={{ type: "spring", stiffness: 280, damping: 22 }}
     >
-      <div className="mb-4">
-        <Icon className={`w-10 h-10 md:w-12 md:h-12 text-[#D4AF37]`} />
-        <h3 className="text-2xl md:text-3xl font-semibold mt-2 text-[#D4AF37]">
+      <div className="flex flex-col items-start mb-6">
+        <Icon className="w-12 h-12 text-[#D4AF37] mb-4" />
+        <h3 className="text-3xl md:text-4xl font-semibold text-[#D4AF37] mb-2 text-left">
           {item.title}
         </h3>
-        <p className="text-lg font-medium text-zinc-300 mt-1">
-          {item.subtitle}
-        </p>
       </div>
-
-      <p className="text-zinc-400 text-sm leading-relaxed mb-5 line-clamp-3 h-[4.5rem]">
-        {item.paragraph}
-      </p>
-
-      <ul className="space-y-2 text-sm text-zinc-300 mt-auto">
-        {item.bulletPoints.map((point, index) => (
-          <li key={index} className="flex items-start">
-            <CheckCircle className="w-4 h-4 text-[#D4AF37] mr-2 mt-0.5 shrink-0" />
-            <span>{point}</span>
-          </li>
-        ))}
-      </ul>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+        <div className="flex flex-col justify-center">
+          <p className="text-lg font-medium text-zinc-300 mb-2 text-left">
+            {item.subtitle}
+          </p>
+          <p className="text-zinc-400 text-base leading-relaxed text-left">
+            {item.paragraph}
+          </p>
+        </div>
+        <ul className="space-y-4 text-base text-zinc-300 flex flex-col justify-center items-start">
+          {item.bulletPoints.map((point, index) => (
+            <li key={index} className="flex items-center align-middle">
+              <CheckCircle className="w-5 h-5 text-[#D4AF37] mr-2 align-middle" />
+              <span className="align-middle leading-tight">{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </motion.div>
   );
 };
@@ -111,6 +85,7 @@ export default function JeromeSpecialSection() {
               className="object-cover"
               sizes="(min-width: 768px) 100vw, 100vw"
             />
+            <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black opacity-60" />
             <div className="absolute inset-0 bg-black bg-opacity-30" />
             <div className="absolute bottom-6 left-6 right-6">
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
@@ -122,12 +97,7 @@ export default function JeromeSpecialSection() {
             </div>
           </div>
         </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {cabineFeatures.map((item) => (
-            <FeatureCard key={item.id} item={item} />
-          ))}
-        </div>
+        <FeatureCard item={cabineFeature} />
       </div>
     </section>
   );

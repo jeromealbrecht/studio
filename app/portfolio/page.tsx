@@ -25,8 +25,15 @@ const portfolioData: PortfolioCategory[] = [
       //   imgUrl: "/img/ale.png",
       //   description:
       //     "Production complète,arrangements, du tracking au mastering. Son moderne et percutant.",
-      //   tags: ["Variété", "EP", "Mixage Analogique"],
-      // },
+      //   tags
+      {
+        id: "single-nezo",
+        title: "Nezo",
+        subtitle: "Élévation",
+        videoUrl: "https://www.youtube.com/watch?v=xsDzIN6UF2A",
+        description: "Enregistrement voix, arrangements et mixage.",
+        tags: ["Rap", "Single", "Arrangement Vocal"],
+      },
       {
         id: "single-jejouzz",
         title: "Miki Type Beat",
@@ -47,27 +54,7 @@ const portfolioData: PortfolioCategory[] = [
   },
   {
     categoryTitle: "Jeu Vidéo",
-    references: [
-      // ... existing jeu vidéo items ...
-      {
-        id: "frostpunk-jv",
-        title: "Frostpunk: The Last Autumn",
-        subtitle: "Sound Design & Intégration Audio",
-        videoUrl: "https://www.youtube.com/watch?v=yTCHXN3Y_o8",
-        description:
-          "Création d'ambiances sonores, bruitages et intégration Wwise pour l'extension 'The Last Autumn'.",
-        tags: ["Jeu vidéo", "Stratégie", "Sound Design", "Wwise"],
-      },
-      {
-        id: "inde-game-skyward",
-        title: "Skyward Bound",
-        subtitle: "Musique Originale & SFX",
-        videoUrl: "https://www.youtube.com/watch?v=exampleIndie1",
-        description:
-          "Composition de la bande originale et création de tous les effets sonores pour ce jeu d'aventure indépendant.",
-        tags: ["Jeu Indépendant", "Musique Originale", "SFX"],
-      },
-    ],
+    references: [],
   },
   {
     categoryTitle: "Spotify", // New Spotify Category
@@ -105,6 +92,15 @@ const portfolioData: PortfolioCategory[] = [
     categoryTitle: "Doublage Cinéma & Voix Off",
     references: [
       // ... existing doublage items ...
+      {
+        id: "Verbaere-auto",
+        title: "Groupe Verbaere Automobile",
+        subtitle: "Voix Off",
+        videoUrl: "https://www.youtube.com/watch?v=BIyRC0bHjHY",
+        imgUrl: "https://img.youtube.com/vi/BIyRC0bHjHY/hqdefault.jpg",
+        description: "mixage et intégration de la voix off.",
+        tags: ["Corporate", "Mixage"],
+      },
       {
         id: "court-metrage-dub",
         title: "Court Métrage 'Si'",
@@ -145,7 +141,9 @@ export default function PortfolioPage() {
   };
 
   const categoryFilters = useMemo(() => {
-    const categories = portfolioData.map((cat) => cat.categoryTitle);
+    const categories = portfolioData
+      .filter((cat) => cat.references && cat.references.length > 0)
+      .map((cat) => cat.categoryTitle);
     return [ALL_CATEGORIES_FILTER, ...new Set(categories)];
   }, []);
 
@@ -192,89 +190,94 @@ export default function PortfolioPage() {
 
       <main className="px-4 sm:px-6 lg:px-8 pb-16 space-y-16">
         {filteredPortfolioData.length > 0 ? (
-          filteredPortfolioData.map((category) => (
-            <section key={category.categoryTitle}>
-              <h2 className="text-3xl font-semibold text-white mb-8 border-b-2 border-[#d4af37] pb-2 inline-block">
-                {category.categoryTitle}
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {category.references.map((item) => (
-                  <div
-                    key={item.id}
-                    className="bg-zinc-800 rounded-lg shadow-xl overflow-hidden group flex flex-col"
-                    onClick={() => openModal(item)} // onClick behavior modified in openModal
-                    onKeyDown={(e) => e.key === "Enter" && openModal(item)}
-                    role={item.spotifyEmbedSrc ? "article" : "button"} // Change role if not interactive
-                    tabIndex={item.spotifyEmbedSrc ? -1 : 0} // Not focusable if not opening modal
-                  >
-                    {item.spotifyEmbedSrc ? (
-                      <div className="p-1">
-                        {" "}
-                        {/* Added padding around Spotify iframe */}
-                        <iframe
-                          className="spotify-embed"
-                          style={{ borderRadius: "12px" }}
-                          src={item.spotifyEmbedSrc}
-                          width="100%"
-                          height="152"
-                          frameBorder="0"
-                          allowFullScreen
-                          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                          loading="lazy"
-                          title={`${item.title} Spotify Embed`}
-                        ></iframe>
-                      </div>
-                    ) : (
-                      <div className="relative aspect-video">
-                        <Image
-                          src={
-                            item.imgUrl
-                              ? item.imgUrl
-                              : item.videoUrl &&
-                                item.videoUrl.includes("youtube.com/watch?v=")
-                              ? `https://img.youtube.com/vi/${
-                                  item.videoUrl.split("v=")[1].split("&")[0]
-                                }/hqdefault.jpg`
-                              : `/placeholder.svg?width=600&height=338&query=${encodeURIComponent(
-                                  item.title + " project thumbnail"
-                                )}`
-                          }
-                          alt={`${item.title} thumbnail`}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
-                          <Youtube className="w-16 h-16 text-white/70 group-hover:text-white transition-colors duration-300" />
+          filteredPortfolioData
+            .filter(
+              (category) =>
+                category.references && category.references.length > 0
+            )
+            .map((category) => (
+              <section key={category.categoryTitle}>
+                <h2 className="text-3xl font-semibold text-white mb-8 border-b-2 border-[#d4af37] pb-2 inline-block">
+                  {category.categoryTitle}
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {category.references.map((item) => (
+                    <div
+                      key={item.id}
+                      className="bg-zinc-800 rounded-lg shadow-xl overflow-hidden group flex flex-col"
+                      onClick={() => openModal(item)} // onClick behavior modified in openModal
+                      onKeyDown={(e) => e.key === "Enter" && openModal(item)}
+                      role={item.spotifyEmbedSrc ? "article" : "button"} // Change role if not interactive
+                      tabIndex={item.spotifyEmbedSrc ? -1 : 0} // Not focusable if not opening modal
+                    >
+                      {item.spotifyEmbedSrc ? (
+                        <div className="p-1">
+                          {" "}
+                          {/* Added padding around Spotify iframe */}
+                          <iframe
+                            className="spotify-embed"
+                            style={{ borderRadius: "12px" }}
+                            src={item.spotifyEmbedSrc}
+                            width="100%"
+                            height="152"
+                            frameBorder="0"
+                            allowFullScreen
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"
+                            title={`${item.title} Spotify Embed`}
+                          ></iframe>
                         </div>
-                      </div>
-                    )}
-                    <div className="p-4 flex flex-col flex-grow">
-                      <h3 className="text-xl font-semibold text-white mb-1">
-                        {item.title}
-                      </h3>
-                      {item.subtitle && (
-                        <p className="text-sm text-zinc-400 mb-2">
-                          {item.subtitle}
-                        </p>
-                      )}
-                      {item.tags && item.tags.length > 0 && (
-                        <div className="flex flex-wrap gap-2 mt-auto pt-2">
-                          {item.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="bg-zinc-900 text-zinc-300 text-xs font-medium px-3 py-1 rounded-full border border-zinc-700 hover:border-zinc-600 transition-colors"
-                            >
-                              {tag}
-                            </span>
-                          ))}
+                      ) : (
+                        <div className="relative aspect-video">
+                          <Image
+                            src={
+                              item.imgUrl
+                                ? item.imgUrl
+                                : item.videoUrl &&
+                                  item.videoUrl.includes("youtube.com/watch?v=")
+                                ? `https://img.youtube.com/vi/${
+                                    item.videoUrl.split("v=")[1].split("&")[0]
+                                  }/hqdefault.jpg`
+                                : `/placeholder.svg?width=600&height=338&query=${encodeURIComponent(
+                                    item.title + " project thumbnail"
+                                  )}`
+                            }
+                            alt={`${item.title} thumbnail`}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
+                            <Youtube className="w-16 h-16 text-white/70 group-hover:text-white transition-colors duration-300" />
+                          </div>
                         </div>
                       )}
+                      <div className="p-4 flex flex-col flex-grow">
+                        <h3 className="text-xl font-semibold text-white mb-1">
+                          {item.title}
+                        </h3>
+                        {item.subtitle && (
+                          <p className="text-sm text-zinc-400 mb-2">
+                            {item.subtitle}
+                          </p>
+                        )}
+                        {item.tags && item.tags.length > 0 && (
+                          <div className="flex flex-wrap gap-2 mt-auto pt-2">
+                            {item.tags.map((tag) => (
+                              <span
+                                key={tag}
+                                className="bg-zinc-900 text-zinc-300 text-xs font-medium px-3 py-1 rounded-full border border-zinc-700 hover:border-zinc-600 transition-colors"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-          ))
+                  ))}
+                </div>
+              </section>
+            ))
         ) : (
           <p className="text-center text-zinc-400 text-lg">
             Aucun projet trouvé pour cette catégorie.

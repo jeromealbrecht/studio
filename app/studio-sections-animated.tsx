@@ -5,6 +5,16 @@ import JeromeSpecialSection from "./jerome-special-section";
 
 const sections = [
   {
+    title: "Production Musicale",
+    text: "Arrangements, mixage, mastering analogique. Des maquettes aux morceaux finalisés, nous accompagnons les artistes dans leur vision musicale.",
+    images: [
+      {
+        src: "/img/production.jpeg",
+        alt: "Musician composing music in a studio",
+      },
+    ],
+  },
+  {
     title: "Sound Design / Game",
     text: "Ambiances immersives, bruitages percussifs, mixage précis pour une expérience sonore unique. Nous collaborons avec des studios de jeu pour créer des paysages sonores mémorables.",
     images: [
@@ -15,16 +25,6 @@ const sections = [
       {
         src: "/placeholder.svg?width=400&height=300",
         alt: "Audio mixing console for sound design",
-      },
-    ],
-  },
-  {
-    title: "Production Musicale",
-    text: "Arrangements, mixage, mastering analogique. Des maquettes aux morceaux finalisés, nous accompagnons les artistes dans leur vision musicale.",
-    images: [
-      {
-        src: "/img/production.jpeg",
-        alt: "Musician composing music in a studio",
       },
     ],
   },
@@ -64,8 +64,12 @@ export default function StudioSections() {
   return (
     <section className="bg-[#121212] text-white py-12 md:py-16 px-4 sm:px-6 md:px-16">
       <h1 className="text-white text-4xl md:text-6xl font-semibold text-center mb-2 md:mb-3 pt-4 md:pt-6 pb-2 md:pb-3">
-        Studio Couleur de son
+        <strong>Studio d&apos;enregistrement</strong> près d&apos;
+        <strong className="text-[#D4AF37]">Amiens</strong>
       </h1>
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-4 md:mb-4">
+        Couleur de son
+      </h2>
       <p className="text-gray-300 text-center text-lg md:text-xl">
         Production musicale - Mixage sonore - Mastering - Composition - Voix off
       </p>

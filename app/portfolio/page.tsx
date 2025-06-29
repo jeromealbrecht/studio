@@ -27,6 +27,14 @@ const portfolioData: PortfolioCategory[] = [
       //     "Production complète,arrangements, du tracking au mastering. Son moderne et percutant.",
       //   tags
       {
+        id: "single-lasulie",
+        title: "Fuis tes peurs",
+        subtitle: "Lasulie",
+        videoUrl: "https://www.youtube.com/watch?v=NnO2uLnCrDA",
+        description: "Enregistrement voix, arrangements et mixage.",
+        tags: ["Experimental", "EP", "Arrangement Vocal"],
+      },
+      {
         id: "single-nezo",
         title: "Dans la tess",
         subtitle: "Nezo",

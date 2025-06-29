@@ -58,7 +58,7 @@ export default function SoundDesignJeuxVideoPage() {
           <div className="bg-zinc-800 p-6 rounded-lg shadow-xl aspect-video flex items-center justify-center">
             {/* Placeholder for Screenshot */}
             <Image
-              src="/placeholder.svg?width=600&height=338"
+              src="/img/unity.webp"
               alt="Espace de travail Unity pour l'audio de jeu"
               width={600}
               height={338}

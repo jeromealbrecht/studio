@@ -8,7 +8,7 @@ const pricingPlans = [
     id: 1,
     title: "Stéréo - Voix",
     description: "Mixage Piste Stéréo + Intégration Voix",
-    price: 97,
+    price: 117,
     priceSuffix: "par titre",
     tagline: "Libérez votre créativité !",
     features: [
@@ -26,7 +26,7 @@ const pricingPlans = [
     title: "Mixage + Master PRO",
     description:
       "Mixage professionnel numérique\nMastering numérique\n25 Pistes Max si Multipiste",
-    price: 147,
+    price: 167,
     priceSuffix: "Par Titre",
     tagline: "LA Formule Mix Master :",
     features: [
@@ -44,7 +44,7 @@ const pricingPlans = [
     title: "Business Analog",
     description:
       "Mixage Numérique et Analogique\nIdéal pour projet PRO\nEntreprise, Corporatif, Album, Single",
-    price: 197,
+    price: 217,
     priceSuffix: "Par Titre",
     tagline: "La formule Business PRO",
     features: [

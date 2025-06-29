@@ -1,60 +1,52 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle, Mic, Brain, Rocket } from "lucide-react"; // Using Lucide icons for bullet points and aspects
+import { CheckCircle, Mic, Settings, Zap } from "lucide-react";
+import Image from "next/image";
 
-const jeromeAspects = [
+const cabineFeatures = [
   {
     id: 1,
     icon: Mic,
-    title: "La Voix",
-    subtitle: "Clarté, émotion et précision",
+    title: "Acoustique soignée",
+    subtitle: "Un espace adapté",
     paragraph:
-      "Allie matériel haut de gamme et sensibilité artistique pour des mixages qui servent autant le message que la voix.",
-    redFlagText:
-      "Peut passer une heure à égaliser un détail que seuls les chauves-souris et Jérôme entendent.",
-    accentColor: "text-[#3B82F6]", // Bleu pour la voix/la clarté
+      "La cabine a été aménagée avec attention pour limiter les résonances et offrir de bonnes conditions d'enregistrement, sans prétention.",
     bulletPoints: [
-      "Plébiscité par des pros de la voix (Amandine A., etc.)",
-      "Chaîne de mastering analogique + numérique pour chaleur et précision",
-      "Mixages clairs et immersifs sur tous les supports",
+      "Traitement acoustique simple et efficace",
+      "Isolement correct pour la plupart des projets",
+      "Ambiance calme et détendue",
     ],
   },
   {
     id: 2,
-    icon: Brain,
-    title: "Le Cerveau",
-    subtitle: "Bien plus qu'une exécution : une vision",
+    icon: Settings,
+    title: "Équipement accessible",
+    subtitle: "Des outils pour s'adapter",
     paragraph:
-      "Jérôme apporte des solutions, des idées créatives et des alternatives sans ego. C'est votre sparring-partner sonore.",
-    redFlagText:
-      "Ne peut pas s'empêcher de proposer une (probablement meilleure) version de votre idée.",
-    accentColor: "text-[#FBBF24]", // Jaune/Or pour les idées
+      "Nous mettons à disposition plusieurs micros et préamplis, choisis pour leur polyvalence et leur fiabilité, afin de s'adapter à chaque voix ou instrument.",
     bulletPoints: [
-      "Résout les problèmes audio avant qu'ils ne deviennent *vos* problèmes",
-      "Pense au-delà de la forme d'onde : intention, impact, tonalité",
-      "Bouscule les clichés avec tact et créativité",
+      "Sony C-80 + SSL VHD PRE",
+      "AT 4040, AT 2020, Aston Element",
+      "Monitoring Dynaudio simple et précis",
     ],
   },
   {
     id: 3,
-    icon: Rocket,
-    title: "La Livraison",
-    subtitle: "Rapidité, structure et tranquillité d'esprit",
+    icon: Zap,
+    title: "Confort & simplicité",
+    subtitle: "Un lieu à taille humaine",
     paragraph:
-      "Fichiers propres, multiples formats, versions détaillées. Vous simplifie la vie, pas seulement le son. Intégration sans accroc.",
-    redFlagText:
-      "Tellement rapide que vous vous demanderez s'il dort (peu, en fait).",
-    accentColor: "text-[#34D399]", // Vert pour la livraison/succès
+      "L'espace est pensé pour que chacun se sente à l'aise, sans chichi, que ce soit pour une courte prise ou une session plus longue.",
     bulletPoints: [
-      "Exports pro (WAV, MP3, stems, demandes sur-mesure)",
-      "Gestion rigoureuse et transparente des versions, pour un suivi sans faille",
-      "Livraison 24|48h pour les projets courts",
+      "Éclairage doux et modulable",
+      "Ventilation discrète",
+      "Accueil chaleureux",
     ],
   },
 ];
 
-const AspectCard = ({ item }: { item: (typeof jeromeAspects)[0] }) => {
+const FeatureCard = ({ item }: { item: (typeof cabineFeatures)[0] }) => {
   const Icon = item.icon;
   return (
     <motion.div
@@ -67,10 +59,8 @@ const AspectCard = ({ item }: { item: (typeof jeromeAspects)[0] }) => {
       transition={{ type: "spring", stiffness: 280, damping: 22 }}
     >
       <div className="mb-4">
-        <Icon className={`w-10 h-10 md:w-12 md:h-12 ${item.accentColor}`} />
-        <h3
-          className={`text-2xl md:text-3xl font-semibold text-white mt-2 ${item.accentColor}`}
-        >
+        <Icon className={`w-10 h-10 md:w-12 md:h-12 text-[#D4AF37]`} />
+        <h3 className="text-2xl md:text-3xl font-semibold mt-2 text-[#D4AF37]">
           {item.title}
         </h3>
         <p className="text-lg font-medium text-zinc-300 mt-1">
@@ -79,24 +69,13 @@ const AspectCard = ({ item }: { item: (typeof jeromeAspects)[0] }) => {
       </div>
 
       <p className="text-zinc-400 text-sm leading-relaxed mb-5 line-clamp-3 h-[4.5rem]">
-        {" "}
-        {/* approx 3 lines */}
         {item.paragraph}
       </p>
-
-      <div className="bg-zinc-900/70 p-3 rounded-md my-4 border border-zinc-700">
-        <p className="text-xs text-zinc-400 flex items-center">
-          <span className="font-semibold text-orange-400 mr-1">Red Flag:</span>{" "}
-          {item.redFlagText}
-        </p>
-      </div>
 
       <ul className="space-y-2 text-sm text-zinc-300 mt-auto">
         {item.bulletPoints.map((point, index) => (
           <li key={index} className="flex items-start">
-            <CheckCircle
-              className={`w-4 h-4 ${item.accentColor} mr-2 mt-0.5 shrink-0`}
-            />
+            <CheckCircle className="w-4 h-4 text-[#D4AF37] mr-2 mt-0.5 shrink-0" />
             <span>{point}</span>
           </li>
         ))}
@@ -110,11 +89,43 @@ export default function JeromeSpecialSection() {
     <section className="bg-[#121212] text-white py-16 md:py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 md:mb-16">
-          Ce qui rend <span className="text-[#d4af37]">Jérôme</span> unique
+          Notre <span className="text-[#D4AF37]">Cabine de Studio</span>
         </h2>
+        <p className="text-center text-zinc-300 max-w-2xl mx-auto mb-10 text-lg">
+          Nous avons aménagé notre cabine avec simplicité et soin, pour
+          accueillir tous types de projets dans une ambiance détendue et
+          accessible à tous.
+        </p>
+        <motion.div
+          className="mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <div className="relative w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden">
+            <Image
+              src="/img/cabine.jpeg"
+              alt="Cabine de studio professionnelle"
+              fill
+              className="object-cover"
+              sizes="(min-width: 768px) 100vw, 100vw"
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-30" />
+            <div className="absolute bottom-6 left-6 right-6">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                Studio Couleur de Son
+              </h3>
+              <p className="text-lg text-zinc-200">
+                Un environnement professionnel pour vos projets audio
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {jeromeAspects.map((item) => (
-            <AspectCard key={item.id} item={item} />
+          {cabineFeatures.map((item) => (
+            <FeatureCard key={item.id} item={item} />
           ))}
         </div>
       </div>

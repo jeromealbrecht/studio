@@ -10,13 +10,15 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import { X, Facebook, Twitter, Globe, ExternalLink } from "lucide-react";
+import Image from "next/image";
 
 export interface Reference {
   id: string;
   title: string;
   subtitle?: string;
-  videoUrl?: string; // Made optional as Spotify items might not have a separate video
-  spotifyEmbedSrc?: string; // New property for Spotify embed URL
+  videoUrl?: string;
+  imgUrl?: string;
+  spotifyEmbedSrc?: string;
   description: string;
   tags?: string[];
   awards?: { iconUrl: string; text: string }[];

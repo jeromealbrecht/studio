@@ -17,23 +17,31 @@ const portfolioData: PortfolioCategory[] = [
     categoryTitle: "Production Musicale",
     references: [
       // ... existing production musicale items ...
+      // {
+      //   id: "rock-band-album",
+      //   title: "À l'échec et à la dame",
+      //   subtitle: "Variété",
+      //   videoUrl: "https://www.youtube.com/watch?v=exampleRock1",
+      //   imgUrl: "/img/ale.png",
+      //   description:
+      //     "Production complète,arrangements, du tracking au mastering. Son moderne et percutant.",
+      //   tags: ["Variété", "EP", "Mixage Analogique"],
+      // },
       {
-        id: "rock-band-album",
-        title: "Album 'Échos Distordus'",
-        subtitle: "Groupe Rock 'Les Amplifiés'",
-        videoUrl: "https://www.youtube.com/watch?v=exampleRock1",
-        description:
-          "Production complète de l'album, du tracking au mastering. Son rock moderne et percutant.",
-        tags: ["Rock", "Album Complet", "Mixage Analogique"],
+        id: "single-jejouzz",
+        title: "Miki Type Beat",
+        subtitle: "Jejouzz",
+        videoUrl: "https://www.youtube.com/watch?v=sAbCMRbBUHE",
+        description: "Enregistrement voix, arrangements et mixage.",
+        tags: ["Hiphop", "Single", "Arrangement Vocal"],
       },
       {
-        id: "variete-single",
-        title: "Single 'Voix d'Or'",
-        subtitle: "Artiste Variété 'Eva Chante'",
-        videoUrl: "https://www.youtube.com/watch?v=exampleVariete1",
-        description:
-          "Enregistrement voix, arrangements et mixage pour ce single pop variété.",
-        tags: ["Variété Française", "Single", "Arrangement Vocal"],
+        id: "single-elevation",
+        title: "Swan",
+        subtitle: "Élévation",
+        videoUrl: "https://www.youtube.com/watch?v=U8RjYttb4aE",
+        description: "Enregistrement voix, arrangements et mixage.",
+        tags: ["Rap", "Single", "Arrangement Vocal"],
       },
     ],
   },
@@ -99,12 +107,12 @@ const portfolioData: PortfolioCategory[] = [
       // ... existing doublage items ...
       {
         id: "court-metrage-dub",
-        title: "Court Métrage 'Le Murmure'",
+        title: "Court Métrage 'Si'",
         subtitle: "Doublage & Mixage Audio",
-        videoUrl: "https://www.youtube.com/watch?v=exampleDub1",
+        videoUrl: "https://www.youtube.com/watch?v=5pD9tEb4ufU",
         description:
-          "Direction artistique du doublage, enregistrement des voix et mixage audio complet pour ce court métrage.",
-        tags: ["Doublage cinéma", "Court Métrage", "Mixage 5.1"],
+          "enregistrement des voix et mixage audio complet pour ce court métrage.",
+        tags: ["Doublage long-métrage", "Mixage"],
       },
     ],
   },
@@ -219,9 +227,18 @@ export default function PortfolioPage() {
                     ) : (
                       <div className="relative aspect-video">
                         <Image
-                          src={`/placeholder.svg?width=600&height=338&query=${encodeURIComponent(
-                            item.title + " project thumbnail"
-                          )}`}
+                          src={
+                            item.imgUrl
+                              ? item.imgUrl
+                              : item.videoUrl &&
+                                item.videoUrl.includes("youtube.com/watch?v=")
+                              ? `https://img.youtube.com/vi/${
+                                  item.videoUrl.split("v=")[1].split("&")[0]
+                                }/hqdefault.jpg`
+                              : `/placeholder.svg?width=600&height=338&query=${encodeURIComponent(
+                                  item.title + " project thumbnail"
+                                )}`
+                          }
                           alt={`${item.title} thumbnail`}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-300"

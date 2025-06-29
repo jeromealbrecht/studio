@@ -28,8 +28,8 @@ const portfolioData: PortfolioCategory[] = [
       //   tags
       {
         id: "single-nezo",
-        title: "Nezo",
-        subtitle: "Élévation",
+        title: "Dans la tess",
+        subtitle: "Nezo",
         videoUrl: "https://www.youtube.com/watch?v=xsDzIN6UF2A",
         description: "Enregistrement voix, arrangements et mixage.",
         tags: ["Rap", "Single", "Arrangement Vocal"],

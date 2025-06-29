@@ -50,6 +50,14 @@ const portfolioData: PortfolioCategory[] = [
         description: "Enregistrement voix, arrangements et mixage.",
         tags: ["Rap", "Single", "Arrangement Vocal"],
       },
+      {
+        id: "single-gerard-toucks",
+        title: "Gérard Toucks",
+        subtitle: "Accompagne-moi",
+        videoUrl: "https://www.youtube.com/watch?v=5ozM5RTIX9s",
+        description: "Enregistrement voix, arrangements et mixage.",
+        tags: ["Guitare", "Chant", "Arrangement Vocal"],
+      },
     ],
   },
   {

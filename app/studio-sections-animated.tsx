@@ -128,9 +128,9 @@ export default function StudioSections() {
               {section.title}
             </h2>
             <p className="text-base md:text-lg text-gray-300">{section.text}</p>
-            <button className="border border-[#D4AF37] text-[#D4AF37] px-6 py-2 hover:bg-[#D4AF37] hover:text-white transition rounded-md text-sm md:text-base">
+            {/* <button className="border border-[#D4AF37] text-[#D4AF37] px-6 py-2 hover:bg-[#D4AF37] hover:text-white transition rounded-md text-sm md:text-base">
               En savoir +
-            </button>
+            </button> */}
           </div>
           <div className="md:w-1/2 flex items-center justify-center">
             {section.images[0] && (

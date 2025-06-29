@@ -74,7 +74,6 @@ export default function StudioSections() {
       <header className="relative w-full h-[240px] md:h-[360px] flex items-center justify-center mt-8 mb-8 md:mt-12 md:mb-12 overflow-hidden rounded-xl">
         <video
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
-          src="/videoStudio.mp4"
           autoPlay
           loop
           muted
@@ -83,7 +82,14 @@ export default function StudioSections() {
           controls={false}
           disablePictureInPicture
           disableRemotePlayback
-        />
+        >
+          <source src="/videoStudio.webm" type="video/webm" />
+          <source src="/videoStudio.mp4" type="video/mp4" />
+          {/* Fallback pour les navigateurs qui ne supportent pas la vidéo */}
+          <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center">
+            <p className="text-white text-lg">Studio Couleur de Son</p>
+          </div>
+        </video>
         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60 z-10" />
         {/* Optionnel : <div className="relative z-20 text-white text-2xl md:text-4xl font-bold">Votre slogan ici</div> */}
       </header>

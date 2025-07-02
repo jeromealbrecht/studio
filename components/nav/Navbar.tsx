@@ -15,6 +15,7 @@ export default function Navbar() {
     { href: "/portfolio", label: "RÉFÉRENCES" },
     { href: "/tarifs", label: "TARIFS" },
     { href: "/videogame", label: "JEUX VIDÉO" },
+    { href: "/reservation", label: "RÉSERVATION" },
   ];
 
   // Define your site's primary yellow color for active links, or another highlight color

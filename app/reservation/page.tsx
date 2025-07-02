@@ -2,9 +2,14 @@
 
 import { useState } from "react";
 import Stepper, { Step } from "@/components/stepper";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, AlertTriangle, MailCheck } from "lucide-react";
+import { useForm, ValidationError } from "@formspree/react";
 
 export default function ReservationPage() {
+  // Formspree hook setup
+  const [state, handleSubmit] = useForm("mgvyqoka");
+
+  // Local state for form inputs
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [service, setService] = useState("");
@@ -17,13 +22,29 @@ export default function ReservationPage() {
     "Autre",
   ];
 
+  // This function will be called by the stepper on the final step.
+  // It triggers the Formspree submission.
   const handleFinalStep = () => {
-    // Here you would typically send the data to your backend or an email service
-    console.log("Form submitted!", { name, email, service });
-    alert(
-      "Merci ! Votre demande a été envoyée. Nous vous recontacterons bientôt."
-    );
+    handleSubmit({
+      name,
+      email,
+      service,
+    });
   };
+
+  // If the form submission was successful, show a thank you message.
+  if (state.succeeded) {
+    return (
+      <div className="bg-[#121212] text-white min-h-screen py-16 md:py-24 px-4 flex flex-col items-center justify-center text-center">
+        <MailCheck className="w-20 h-20 text-green-500 mb-6" />
+        <h1 className="text-4xl md:text-5xl font-bold text-white">Merci !</h1>
+        <p className="text-zinc-300 mt-4 text-lg max-w-md mx-auto">
+          Votre demande a été envoyée avec succès. Nous reviendrons vers vous
+          dans les plus brefs délais.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-[#121212] text-white min-h-screen py-16 md:py-24 px-4">
@@ -37,11 +58,14 @@ export default function ReservationPage() {
         </p>
       </header>
 
+      {/* We don't need a <form> tag here because we are triggering handleSubmit manually */}
       <Stepper
         onFinalStepCompleted={handleFinalStep}
         backButtonText="Précédent"
         nextButtonText="Suivant"
-        finishButtonText="Envoyer la demande"
+        finishButtonText={
+          state.submitting ? "Envoi en cours..." : "Envoyer la demande"
+        }
       >
         <Step>
           <div className="space-y-4">
@@ -77,20 +101,42 @@ export default function ReservationPage() {
               Comment pouvons-nous vous contacter ?
             </p>
             <div className="max-w-sm mx-auto space-y-4 pt-4 text-left">
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Votre nom complet"
-                className="w-full bg-zinc-800 border border-zinc-700 rounded-md px-4 py-2 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-[#d4af37]"
-              />
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Votre adresse e-mail"
-                className="w-full bg-zinc-800 border border-zinc-700 rounded-md px-4 py-2 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-[#d4af37]"
-              />
+              <div>
+                <input
+                  id="name"
+                  type="text"
+                  name="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Votre nom complet"
+                  required // Added required attribute
+                  className="w-full bg-zinc-800 border border-zinc-700 rounded-md px-4 py-2 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-[#d4af37]"
+                />
+                <ValidationError
+                  prefix="Name"
+                  field="name"
+                  errors={state.errors}
+                  className="text-red-500 text-xs mt-1"
+                />
+              </div>
+              <div>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Votre adresse e-mail"
+                  required // Added required attribute
+                  className="w-full bg-zinc-800 border border-zinc-700 rounded-md px-4 py-2 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-[#d4af37]"
+                />
+                <ValidationError
+                  prefix="Email"
+                  field="email"
+                  errors={state.errors}
+                  className="text-red-500 text-xs mt-1"
+                />
+              </div>
             </div>
           </div>
         </Step>
@@ -124,6 +170,14 @@ export default function ReservationPage() {
                 </span>
               </p>
             </div>
+            {Array.isArray(state.errors) && state.errors.length > 0 && (
+              <div className="flex items-center justify-center gap-2 text-red-500 mt-4">
+                <AlertTriangle size={16} />
+                <p className="text-sm font-semibold">
+                  Une erreur est survenue. Veuillez vérifier vos informations.
+                </p>
+              </div>
+            )}
           </div>
         </Step>
       </Stepper>

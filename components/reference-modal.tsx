@@ -9,7 +9,14 @@ import {
   DialogDescription,
   DialogClose,
 } from "@/components/ui/dialog";
-import { X, Facebook, Twitter, Globe, ExternalLink } from "lucide-react";
+import {
+  X,
+  Facebook,
+  Twitter,
+  Globe,
+  ExternalLink,
+  LucideIcon,
+} from "lucide-react";
 import Image from "next/image";
 
 export interface Reference {
@@ -28,6 +35,9 @@ export interface Reference {
   }[];
   websiteUrl?: string;
   purchaseLinks?: { platform: "steam" | "ps4" | "xbox"; url: string }[];
+  imageUrl?: string;
+  icon?: LucideIcon;
+  color?: string;
 }
 
 const SteamIcon = () => <span className="font-bold">STEAM</span>;

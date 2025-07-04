@@ -4,6 +4,7 @@ import { useState } from "react";
 import Stepper, { Step } from "@/components/stepper";
 import { CheckCircle, AlertTriangle, MailCheck } from "lucide-react";
 import { useForm, ValidationError } from "@formspree/react";
+import { toast } from "@/hooks/use-toast";
 
 export default function ReservationPage() {
   // Formspree hook setup
@@ -13,6 +14,7 @@ export default function ReservationPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [service, setService] = useState("");
+  const [currentStep, setCurrentStep] = useState(0);
 
   const services = [
     "Prise de son + mixage",
@@ -30,6 +32,27 @@ export default function ReservationPage() {
       email,
       service,
     });
+  };
+
+  const isValidEmail = (email: string) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const canProceed =
+    currentStep === 0
+      ? !!service
+      : currentStep === 1
+      ? name.trim() !== "" && isValidEmail(email)
+      : true;
+
+  const handleStepChange = (step: number) => {
+    // Si on essaie d'aller à l'étape 2 (index 1) et que l'email est invalide, affiche un toast
+    if (step === 1 && !isValidEmail(email)) {
+      toast({
+        title: "Format d'email invalide",
+        description: "Merci de saisir une adresse e-mail valide.",
+        variant: "destructive",
+      });
+    }
+    setCurrentStep(step);
   };
 
   // If the form submission was successful, show a thank you message.
@@ -61,11 +84,13 @@ export default function ReservationPage() {
       {/* We don't need a <form> tag here because we are triggering handleSubmit manually */}
       <Stepper
         onFinalStepCompleted={handleFinalStep}
+        onStepChange={handleStepChange}
         backButtonText="Précédent"
         nextButtonText="Suivant"
         finishButtonText={
           state.submitting ? "Envoi en cours..." : "Envoyer la demande"
         }
+        canProceed={canProceed}
       >
         <Step>
           <div className="space-y-4">

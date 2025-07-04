@@ -17,6 +17,7 @@ interface StepperProps {
   backButtonText?: string;
   nextButtonText?: string;
   finishButtonText?: string;
+  canProceed?: boolean;
 }
 
 export default function Stepper({
@@ -27,6 +28,7 @@ export default function Stepper({
   backButtonText = "Précédent",
   nextButtonText = "Suivant",
   finishButtonText = "Terminer",
+  canProceed,
 }: StepperProps) {
   const steps = Children.toArray(children).filter(isValidElement);
   const [currentStep, setCurrentStep] = useState(initialStep);
@@ -136,6 +138,7 @@ export default function Stepper({
         <button
           onClick={goToNextStep}
           className="px-6 py-2 text-sm font-semibold text-black bg-[#d4af37] rounded-md hover:bg-yellow-500 transition-colors flex items-center"
+          disabled={!isLastStep && canProceed === false}
         >
           {isLastStep ? finishButtonText : nextButtonText}
           {!isLastStep && <ArrowRight size={16} className="ml-2" />}

@@ -20,7 +20,7 @@ const timelineEvents = [
   {
     icon: Users,
     date: "Expérience récente",
-    title: "Expérience chez FeelingJack.eu (Edimburgh)",
+    title: "Expérience chez FeelingJack.eu, Edimburgh",
     description:
       "Conception et développement d'une application SaaS événementiel pour la gestion des bénévoles (Proof of Concept : Marathon du Lac d'Annecy). Mise en place d'une Clean Architecture avec optimisations API (+40% de vélocité), création de dashboards avec gestion des rôles utilisateurs et filtres géolocalisés. Stack : Next.js, Strapi V5, TypeScript, TailWind CSS, déployé sur Digital Ocean/AWS.",
     color: "text-indigo-400",
@@ -28,7 +28,7 @@ const timelineEvents = [
   {
     icon: Building,
     date: "2022",
-    title: "Développeur Drupal chez Smile",
+    title: "Développeur Drupal chez Smile, Lille",
     description:
       "Expérience en développement Drupal au sein de l'agence Smile.",
     color: "text-cyan-400",
@@ -37,7 +37,7 @@ const timelineEvents = [
     icon: Code,
     date: "Reconversion dès 2021",
     title:
-      "Formation Développeur Web (Bac + 2, obtenu) + Formation CDA Java/SpringBoot/Maven (non diplômante)",
+      "Formation Développeur Web (Bac + 2, obtenu) + Formation CDA Java/SpringBoot/Maven, Amiens",
     description:
       "Acquisition de compétences en développement (Java, Spring, POO, Jira, Git) pour mieux comprendre les enjeux techniques et collaborer efficacement sur les projets professionnels (Saas, Applications).",
     color: "text-orange-400",
@@ -45,12 +45,12 @@ const timelineEvents = [
   {
     icon: Briefcase,
     date: "2017 - 2021",
-    title: "Ingénieur du Son Freelance",
+    title: "Ingénieur du Son Freelance, Amiens",
     description:
       "Lancement de mon activité indépendante, accompagnant artistes, entreprises et créateurs dans leurs projets audio. Complété par la formation 'Créer - reprendre une entreprise' (BGE, 2018, Certificat Obtenu).",
     bulletPoints: [
-      "Répondre au besoin Urgent du client",
-      "Exigence élevée quand au rendu du travail",
+      "Répondre au besoin urgent du client",
+      "Exigence élevée quant au rendu du travail",
       "Deadlines à respecter",
     ],
     color: "text-emerald-400",
@@ -66,7 +66,7 @@ const timelineEvents = [
   {
     icon: Mic,
     date: "2014 - 2017",
-    title: "Expérience en Studio d'Enregistrement",
+    title: "Expérience en Studio d'Enregistrement, St-Quentin",
     description:
       "Premières armes en environnement professionnel, gestion de sessions d'enregistrement et assistance au mixage + accueil client, encaissements, résolution de problèmes.",
     color: "text-purple-400",
@@ -212,8 +212,8 @@ export default function QuiSuisJePage() {
                 {event.bulletPoints && (
                   <ul className="mt-4 space-y-2 text-zinc-300">
                     {event.bulletPoints.map((point, pointIndex) => (
-                      <li key={pointIndex} className="flex items-start">
-                        <span className="text-[#d4af37] mr-2 mt-1">•</span>
+                      <li key={pointIndex} className="flex items-center">
+                        <span className="text-[#d4af37] mr-2">•</span>
                         <span className="text-sm">{point}</span>
                       </li>
                     ))}
@@ -312,17 +312,21 @@ export default function QuiSuisJePage() {
                             </ul>
                           )}
                         </div>
-                        <a
-                          href={achievement.websiteUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center mt-6 text-sm font-semibold text-[#d4af37] hover:text-yellow-400"
-                        >
-                          {achievement.id === "amandine-voix-off"
-                            ? "développement en cours"
-                            : "Visiter le site"}{" "}
-                          <ArrowRight className="w-4 h-4 ml-1" />
-                        </a>
+                        {achievement.id === "amandine-voix-off" ? (
+                          <span className="inline-flex items-center mt-6 text-sm font-semibold text-[#d4af37]">
+                            Développement en cours
+                          </span>
+                        ) : (
+                          <a
+                            href={achievement.websiteUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center mt-6 text-sm font-semibold text-[#d4af37] hover:text-yellow-400"
+                          >
+                            Visiter le site{" "}
+                            <ArrowRight className="w-4 h-4 ml-1" />
+                          </a>
+                        )}
                       </div>
                     </div>
                   </div>

@@ -11,26 +11,49 @@ import {
   ArrowRight,
   Layers,
   Users,
+  Building,
 } from "lucide-react";
 import Image from "next/image";
 import ReferenceModal, { type Reference } from "@/components/reference-modal";
 
 const timelineEvents = [
   {
-    icon: School,
-    date: "Formation Initiale",
-    title: "Technicien Audiovisuel, UPJV Amiens",
+    icon: Users,
+    date: "Expérience récente",
+    title: "Expérience chez FeelingJack.eu (Edimburgh)",
     description:
-      "Prise de vues, montage vidéo, aide aux enseignants lors des cours ou d'évènements.",
-    color: "text-blue-400",
+      "Conception et développement d'une application SaaS événementiel pour la gestion des bénévoles (Proof of Concept : Marathon du Lac d'Annecy). Mise en place d'une Clean Architecture avec optimisations API (+40% de vélocité), création de dashboards avec gestion des rôles utilisateurs et filtres géolocalisés. Stack : Next.js, Strapi V5, TypeScript, TailWind CSS, déployé sur Digital Ocean/AWS.",
+    color: "text-indigo-400",
   },
   {
-    icon: Mic,
-    date: "2014 - 2017",
-    title: "Expérience en Studio d'Enregistrement",
+    icon: Building,
+    date: "2022",
+    title: "Développeur Drupal chez Smile",
     description:
-      "Premières armes en environnement professionnel, gestion de sessions d'enregistrement et assistance au mixage.",
-    color: "text-purple-400",
+      "Expérience en développement Drupal au sein de l'agence Smile.",
+    color: "text-cyan-400",
+  },
+  {
+    icon: Code,
+    date: "Reconversion dès 2021",
+    title:
+      "Formation Développeur Web (Bac + 2, obtenu) + Formation CDA Java/SpringBoot/Maven (non diplômante)",
+    description:
+      "Acquisition de compétences en développement (Java, Spring, POO, Jira, Git) pour mieux comprendre les enjeux techniques et collaborer efficacement sur les projets professionnels (Saas, Applications).",
+    color: "text-orange-400",
+  },
+  {
+    icon: Briefcase,
+    date: "2017 - 2021",
+    title: "Ingénieur du Son Freelance",
+    description:
+      "Lancement de mon activité indépendante, accompagnant artistes, entreprises et créateurs dans leurs projets audio. Complété par la formation 'Créer - reprendre une entreprise' (BGE, 2018, Certificat Obtenu).",
+    bulletPoints: [
+      "Répondre au besoin Urgent du client",
+      "Exigence élevée quand au rendu du travail",
+      "Deadlines à respecter",
+    ],
+    color: "text-emerald-400",
   },
   {
     icon: Star,
@@ -41,21 +64,20 @@ const timelineEvents = [
     color: "text-yellow-400",
   },
   {
-    icon: Briefcase,
-    date: "2017 - Aujourd'hui",
-    title: "Ingénieur du Son Freelance",
+    icon: Mic,
+    date: "2014 - 2017",
+    title: "Expérience en Studio d'Enregistrement",
     description:
-      "Lancement de mon activité indépendante, accompagnant artistes, entreprises et créateurs dans leurs projets audio. Complété par la formation 'Créer - reprendre une entreprise' (BGE, 2018, Certificat Obtenu).",
-    color: "text-emerald-400",
+      "Premières armes en environnement professionnel, gestion de sessions d'enregistrement et assistance au mixage + accueil client, encaissements, résolution de problèmes.",
+    color: "text-purple-400",
   },
   {
-    icon: Code,
-    date: "Reconversion dès 2021",
-    title:
-      "Formation Développeur Web (Bac + 2, obtenu) + Formation CDA Java/SpringBoot/Maven (non diplômante)",
+    icon: School,
+    date: "Expérience 2011 à 2013",
+    title: "Technicien Audiovisuel, UPJV Amiens",
     description:
-      "Acquisition de compétences en développement (Java, Spring, POO, Jira, Git) pour mieux comprendre les enjeux techniques et collaborer efficacement sur les projets professionnels (Saas, Applications).",
-    color: "text-orange-400",
+      "Prise de vues, montage vidéo, aide aux enseignants lors des cours ou d'évènements.",
+    color: "text-blue-400",
   },
 ];
 
@@ -74,22 +96,14 @@ const notableAchievements: Reference[] = [
   },
   {
     id: "feelingjack-activcreew",
-    title: "Plateforme Web pour Feelingjack.eu",
+    title: "Saas Evenementiel ActivCreew pour Feelingjack.eu",
     subtitle: "Client: Edimbourg | Équipe: 8 développeurs",
     description: `
-    <p>Je participe activement à la conception et au développement de cette application afin de simplifier la gestion des bénévoles sur l'évènement du Marathon du Lac d'Annecy qui nous sert de "Proof of Concept" pour cette application.</p>
-    <h5 class="font-semibold text-white mt-4 mb-2">Architecture & Performance :</h5>
-    <ul class="list-disc list-inside space-y-1">
-      <li>Application d'une Clean Architecture avec séparation claire des logiques métier</li>
-      <li>Optimisation des requêtes API et gestion de la mise en cache</li>
-    </ul>
-    <h5 class="font-semibold text-white mt-4 mb-2">Développement Frontend :</h5>
-    <ul class="list-disc list-inside space-y-1">
-      <li>Création des Dashboard avec fonctionnalités spécifiques aux rôles utilisateurs</li>
-      <li>Implémentation des filtres de recherche géolocalisés (évènements, associations, missions)</li>
-      <li>Développement de l'interface de configuration pour les administrateurs</li>
-    </ul>
-  `,
+<p>Je participe activement à la conception et au développement de cette application afin de simplifier la gestion des bénévoles sur l'évènement du Marathon du Lac d'Annecy qui nous sert de "Proof of Concept" pour cette application.</p>
+<p class="mt-3"><strong>Architecture & Performance :</strong> Clean Architecture avec séparation claire des logiques métier, optimisation des requêtes API et gestion de la mise en cache (+40% de gain en vélocité).</p>
+<p class="mt-3"><strong>Développement Frontend :</strong> Création des Dashboard avec fonctionnalités spécifiques aux rôles utilisateurs, implémentation des filtres de recherche géolocalisés et développement de l'interface de configuration pour les administrateurs.</p>
+<p class="mt-3"><strong>Stack :</strong> Next.js, Strapi V5, TypeScript, TailWind CSS, ShadCN, TanStack, Radix UI, Digital Ocean, AWS, GitLab, Docker.</p>
+`,
     imageUrl: "/img/activcreew-screenshot.png",
     websiteUrl: "https://activcreew.app/",
     tags: ["Next.js", "TypeScript", "Strapi", "Teamwork", "Clean Architecture"],
@@ -119,7 +133,7 @@ const NeonIcon = () => (
   >
     <title>Neon</title>
     <path
-      d="M12 24C5.373 24 0 18.627 0 12S5.373 0 12 0s12 5.373 12 12-5.373 12-12 12zm-3.37-10.822h6.74v-2.356h-6.74v2.356zm0 4.444h6.74v-2.356h-6.74v2.356z"
+      d="M12 24C5.373 24 0 18.627 0 12 0s12 5.373 12 12-5.373 12-12 12zm-3.37-10.822h6.74v-2.356h-6.74v2.356zm0 4.444h6.74v-2.356h-6.74v2.356z"
       fill="#00E599"
     />
   </svg>
@@ -162,6 +176,9 @@ export default function QuiSuisJePage() {
       <div className="bg-[#121212] text-white min-h-screen">
         <header className="py-16 md:py-24 text-center bg-zinc-900/30">
           <div className="max-w-4xl mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+              Jérôme Albrecht
+            </h2>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
               Mon <span className="text-[#d4af37]">Parcours dans la Tech</span>
             </h1>
@@ -192,6 +209,16 @@ export default function QuiSuisJePage() {
                 <p className="text-zinc-300 leading-relaxed">
                   {event.description}
                 </p>
+                {event.bulletPoints && (
+                  <ul className="mt-4 space-y-2 text-zinc-300">
+                    {event.bulletPoints.map((point, pointIndex) => (
+                      <li key={pointIndex} className="flex items-start">
+                        <span className="text-[#d4af37] mr-2 mt-1">•</span>
+                        <span className="text-sm">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             ))}
           </div>
@@ -291,7 +318,9 @@ export default function QuiSuisJePage() {
                           rel="noopener noreferrer"
                           className="inline-flex items-center mt-6 text-sm font-semibold text-[#d4af37] hover:text-yellow-400"
                         >
-                          Visiter le site{" "}
+                          {achievement.id === "amandine-voix-off"
+                            ? "développement en cours"
+                            : "Visiter le site"}{" "}
                           <ArrowRight className="w-4 h-4 ml-1" />
                         </a>
                       </div>
@@ -313,17 +342,22 @@ export default function QuiSuisJePage() {
           {/* Recommendations Section */}
           <div className="mt-20 pt-16 border-t border-zinc-800">
             <h2 className="text-3xl font-bold text-center mb-12">
-              <span className="text-[#d4af37]">Recommandations</span>
+              <span className="text-[#d4af37]">Recommandations</span> Clients
             </h2>
-            <div className="flex justify-center">
-              <Image
-                src="/img/recos.png"
-                alt="Recommandations LinkedIn de clients satisfaits"
-                width={800}
-                height={400}
-                className="rounded-xl shadow-2xl border-2 border-zinc-800 max-w-full h-auto"
-                priority
-              />
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-zinc-800/30 p-6 md:p-8 rounded-2xl border border-zinc-700">
+                <Image
+                  src="/img/recos.png"
+                  alt="Recommandations LinkedIn de clients satisfaits"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto rounded-lg shadow-lg"
+                />
+                <p className="text-zinc-400 text-sm mt-4 text-center">
+                  Témoignages de clients sur LinkedIn - Projets de développement
+                  web et refonte de sites
+                </p>
+              </div>
             </div>
           </div>
         </main>

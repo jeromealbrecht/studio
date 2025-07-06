@@ -20,7 +20,7 @@ const timelineEvents = [
   {
     icon: Users,
     date: "Expérience récente",
-    title: "Expérience chez FeelingJack.eu, Edimburgh",
+    title: "Expérience chez FeelingJack.eu, Édimbourg",
     description:
       "Conception et développement d'une application SaaS événementiel pour la gestion des bénévoles (Proof of Concept : Marathon du Lac d'Annecy). Mise en place d'une Clean Architecture avec optimisations API (+40% de vélocité), création de dashboards avec gestion des rôles utilisateurs et filtres géolocalisés. Stack : Next.js, Strapi V5, TypeScript, TailWind CSS, déployé sur Digital Ocean/AWS.",
     color: "text-indigo-400",
@@ -97,7 +97,7 @@ const notableAchievements: Reference[] = [
   {
     id: "feelingjack-activcreew",
     title: "Saas Evenementiel ActivCreew pour Feelingjack.eu",
-    subtitle: "Client: Edimbourg | Équipe: 8 développeurs",
+    subtitle: "Client: Édimbourg | Équipe: 8 développeurs",
     description: `
 <p>Je participe activement à la conception et au développement de cette application afin de simplifier la gestion des bénévoles sur l'évènement du Marathon du Lac d'Annecy qui nous sert de "Proof of Concept" pour cette application.</p>
 <p class="mt-3"><strong>Architecture & Performance :</strong> Clean Architecture avec séparation claire des logiques métier, optimisation des requêtes API et gestion de la mise en cache (+40% de gain en vélocité).</p>

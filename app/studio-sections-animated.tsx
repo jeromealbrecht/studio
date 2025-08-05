@@ -6,7 +6,7 @@ import JeromeSpecialSection from "./jerome-special-section";
 const sections = [
   {
     title: "Production Musicale",
-    text: "Arrangements, mixage, mastering analogique. Des maquettes aux morceaux finalisés, nous accompagnons les artistes dans leur vision musicale.",
+    text: "Arrangements, mixage, mastering analogique. Des maquettes aux morceaux finalisés, j'accompagne les artistes dans leur vision musicale.",
     images: [
       {
         src: "/img/production.jpeg",
@@ -16,7 +16,7 @@ const sections = [
   },
   {
     title: "Sound Design / Game",
-    text: "Ambiances immersives, bruitages percussifs, mixage précis pour une expérience sonore unique. Nous collaborons avec des studios de jeu pour créer des paysages sonores mémorables.",
+    text: "Ambiances immersives, bruitages percussifs, mixage précis pour une expérience sonore unique. Je collabore avec des studios de jeu pour créer des paysages sonores mémorables.",
     images: [
       {
         src: "/img/tycoon.png",
@@ -99,7 +99,7 @@ export default function StudioSections() {
       </header>
 
       <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-24 mt-24 md:mb-24 md:mt-24">
-        Découvrez notre univers
+        Découvrez mon univers
       </h2>
 
       {sections.map((section, index) => (

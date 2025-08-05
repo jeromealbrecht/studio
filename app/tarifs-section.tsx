@@ -20,6 +20,10 @@ const pricingPlans = [
     ctaText: "Prendre RDV",
     accentColor: "text-purple-400",
     isFeatured: false,
+    // Promo fields
+    promoPrice: 87,
+    promoEndDate: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(), // 5 days from now
+    promoText: "PROMO",
   },
   {
     id: 2,
@@ -61,6 +65,13 @@ const pricingPlans = [
 ];
 
 const PricingCard = ({ plan }: { plan: (typeof pricingPlans)[0] }) => {
+  // Promo logic
+  const now = Date.now();
+  const promoActive =
+    plan.promoPrice &&
+    plan.promoEndDate &&
+    now < new Date(plan.promoEndDate).getTime();
+
   return (
     <motion.div
       className={`bg-zinc-800 p-6 md:p-8 rounded-xl shadow-xl flex flex-col h-full border border-zinc-700 hover:border-zinc-600 transition-colors duration-300 ${
@@ -89,29 +100,69 @@ const PricingCard = ({ plan }: { plan: (typeof pricingPlans)[0] }) => {
         ))}
       </div>
 
-      <div className="my-4">
-        <span className="text-5xl font-bold text-white">{plan.price}€</span>
-        <span className="text-sm text-zinc-400 ml-1">{plan.priceSuffix}</span>
+      <div className="my-4 flex items-center space-x-2">
+        {promoActive ? (
+          <>
+            <span className="text-5xl font-bold text-white">
+              {plan.promoPrice}€
+            </span>
+            <span className="text-sm text-zinc-400 ml-1">
+              {plan.priceSuffix}
+            </span>
+            <span className="ml-2 px-2 py-1 bg-pink-500 text-white text-xs font-bold rounded">
+              {plan.promoText || "PROMO"}
+            </span>
+            <span className="text-zinc-400 line-through ml-3 text-2xl">
+              {plan.price}€
+            </span>
+          </>
+        ) : (
+          <>
+            <span className="text-5xl font-bold text-white">{plan.price}€</span>
+            <span className="text-sm text-zinc-400 ml-1">
+              {plan.priceSuffix}
+            </span>
+          </>
+        )}
       </div>
 
       <p className="text-md font-semibold text-zinc-300 mb-5">{plan.tagline}</p>
 
       <ul className="space-y-2 text-sm text-zinc-300 mb-8">
-        {plan.features.map((feature, index) => (
-          <li key={index} className="flex items-start">
-            <Check
-              className={`w-5 h-5 ${
-                plan.accentColor || "text-green-400"
-              } mr-2 mt-0.5 shrink-0`}
-            />
-            <span>{feature}</span>
-          </li>
-        ))}
+        {/* Enregistrement INCLUS - always on top, larger font */}
+        <li className="flex items-start">
+          <Check
+            className={`w-5 h-5 ${
+              plan.accentColor || "text-green-400"
+            } mr-2 mt-0.5 shrink-0`}
+          />
+          <span className="text-lg font-bold text-white">
+            Enregistrement INCLUS
+          </span>
+        </li>
+        {/* Features list, but skip duplicate 'Enregistrement INCLUS' if present */}
+        {plan.features.map((feature, index) =>
+          feature === "Enregistrement INCLUS" ? null : (
+            <li key={index} className="flex items-start">
+              <Check
+                className={`w-5 h-5 ${
+                  plan.accentColor || "text-green-400"
+                } mr-2 mt-0.5 shrink-0`}
+              />
+              <span>{feature}</span>
+            </li>
+          )
+        )}
       </ul>
 
-      <button className="mt-auto w-full bg-white text-zinc-900 font-semibold py-3 px-6 rounded-lg hover:bg-zinc-200 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2 focus:ring-offset-zinc-800">
+      <a
+        href="https://tally.so/r/mKjLJX"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-auto w-full bg-white text-zinc-900 font-semibold py-3 px-6 rounded-lg hover:bg-zinc-200 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2 focus:ring-offset-zinc-800 text-center block"
+      >
         {plan.ctaText}
-      </button>
+      </a>
     </motion.div>
   );
 };

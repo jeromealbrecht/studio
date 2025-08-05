@@ -6,10 +6,10 @@ import Image from "next/image";
 
 const cabineFeature = {
   icon: Settings,
-  title: "Notre équipement",
-  subtitle: "Des outils fiables et adaptés à vos projets",
+  title: "Mon équipement",
+  subtitle: "Des outils fiables et adaptés à mes projets",
   paragraph:
-    "Nous mettons à disposition plusieurs micros et préamplis, choisis pour leur polyvalence et leur fiabilité, afin de s'adapter à chaque voix ou instrument. Le monitoring Dynaudio permet un contrôle précis du rendu sonore. L'espace est pensé pour que chacun se sente à l'aise, sans chichi, dans une ambiance simple et accueillante.",
+    "Je mets à disposition plusieurs micros et préamplis, choisis pour leur polyvalence et leur fiabilité, afin de m'adapter à chaque voix ou instrument. Le monitoring Dynaudio me permet un contrôle précis du rendu sonore. L'espace est pensé pour que chacun se sente à l'aise, sans chichi, dans une ambiance simple et accueillante.",
   bulletPoints: [
     "Sony C-80 + SSL VHD PRE",
     "AT 4040, AT 2020, Aston Element",
@@ -63,12 +63,11 @@ export default function JeromeSpecialSection() {
     <section className="bg-[#121212] text-white py-16 md:py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 md:mb-16">
-          Notre <span className="text-[#D4AF37]">Cabine de Studio</span>
+          Ma <span className="text-[#D4AF37]">Cabine de Studio</span>
         </h2>
         <p className="text-center text-zinc-300 max-w-2xl mx-auto mb-10 text-lg">
-          Nous avons aménagé notre cabine avec simplicité et soin, pour
-          accueillir tous types de projets dans une ambiance détendue et
-          accessible à tous.
+          J'ai aménagé ma cabine avec simplicité et soin, pour accueillir tous
+          types de projets dans une ambiance détendue et accessible à tous.
         </p>
         <motion.div
           className="mb-16"

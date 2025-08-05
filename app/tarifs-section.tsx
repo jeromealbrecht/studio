@@ -20,7 +20,6 @@ const pricingPlans = [
     ctaText: "Prendre RDV",
     accentColor: "text-purple-400",
     isFeatured: false,
-    // Promo fields
     promoPrice: 87,
     promoEndDate: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(), // 5 days from now
     promoText: "PROMO",
@@ -42,6 +41,9 @@ const pricingPlans = [
     ctaText: "Prendre RDV",
     accentColor: "text-pink-400",
     isFeatured: true,
+    promoPrice: 137,
+    promoEndDate: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(), // 5 days from now
+    promoText: "PROMO",
   },
   {
     id: 3,
@@ -61,6 +63,9 @@ const pricingPlans = [
     ctaText: "Prendre RDV",
     accentColor: "text-teal-400",
     isFeatured: false,
+    promoPrice: 167,
+    promoEndDate: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(), // 5 days from now
+    promoText: "PROMO",
   },
 ];
 

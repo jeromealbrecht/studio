@@ -40,6 +40,11 @@ export default function RootLayout({
         {/* Directives pour les robots d'indexation */}
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow" />
+        <script
+          src="https://www.paypal.com/sdk/js?client-id=BAAx4cpNphSaW_0sKwSpl4xL00_vqstYZxqQ0kby2zlcql6encuGW6HyYg63h4EXx-kqzYAEWk4Apa5BE4&components=hosted-buttons&disable-funding=venmo&currency=EUR"
+          crossOrigin="anonymous"
+          async
+        ></script>
       </head>
       <body>
         <Navbar />

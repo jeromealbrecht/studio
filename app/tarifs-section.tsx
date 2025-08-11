@@ -3,6 +3,14 @@
 import React from "react";
 import { Check } from "lucide-react";
 
+const getTomorrowEndOfDayIso = (): string => {
+  const now = new Date();
+  const tomorrow = new Date(now);
+  tomorrow.setDate(now.getDate() + 1);
+  tomorrow.setHours(23, 59, 59, 999);
+  return tomorrow.toISOString();
+};
+
 const pricingPlans = [
   {
     id: 1,
@@ -22,7 +30,7 @@ const pricingPlans = [
     accentColor: "text-purple-400",
     isFeatured: false,
     promoPrice: 87,
-    promoEndDate: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(),
+    promoEndDate: getTomorrowEndOfDayIso(),
     promoText: "PROMO",
   },
   {
@@ -43,7 +51,7 @@ const pricingPlans = [
     accentColor: "text-pink-400",
     isFeatured: true,
     promoPrice: 137,
-    promoEndDate: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(),
+    promoEndDate: getTomorrowEndOfDayIso(),
     promoText: "PROMO",
   },
   {
@@ -65,7 +73,7 @@ const pricingPlans = [
     accentColor: "text-teal-400",
     isFeatured: false,
     promoPrice: 167,
-    promoEndDate: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(),
+    promoEndDate: getTomorrowEndOfDayIso(),
     promoText: "PROMO",
   },
 ];

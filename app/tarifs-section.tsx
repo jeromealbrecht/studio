@@ -3,21 +3,13 @@
 import React from "react";
 import { Check } from "lucide-react";
 
-const getTomorrowEndOfDayIso = (): string => {
-  const now = new Date();
-  const tomorrow = new Date(now);
-  tomorrow.setDate(now.getDate() + 1);
-  tomorrow.setHours(23, 59, 59, 999);
-  return tomorrow.toISOString();
-};
-
 const pricingPlans = [
   {
     id: 1,
     title: "Stéréo - Voix",
     description:
       "Mixage Piste Stéréo + Intégration Voix\nIdéal Youtube, Soundcloud, RS",
-    price: 117,
+    price: 107,
     priceSuffix: "par titre",
     tagline: "Libérez votre créativité !",
     features: [
@@ -29,16 +21,13 @@ const pricingPlans = [
     ctaText: "Prendre RDV",
     accentColor: "text-purple-400",
     isFeatured: false,
-    promoPrice: 87,
-    promoEndDate: getTomorrowEndOfDayIso(),
-    promoText: "PROMO",
   },
   {
     id: 2,
     title: "Mixage + Master PRO",
     description:
       "Mixage professionnel numérique\nMastering numérique\n25 Pistes Max si Multipiste",
-    price: 167,
+    price: 157,
     priceSuffix: "Par Titre",
     tagline: "LA Formule Mix Master :",
     features: [
@@ -50,16 +39,13 @@ const pricingPlans = [
     ctaText: "Prendre RDV",
     accentColor: "text-pink-400",
     isFeatured: true,
-    promoPrice: 137,
-    promoEndDate: getTomorrowEndOfDayIso(),
-    promoText: "PROMO",
   },
   {
     id: 3,
     title: "Business Analog",
     description:
       "Mixage Numérique et Analogique\nIdéal pour projet PRO\nEntreprise, Corporatif, Album, Single",
-    price: 217,
+    price: 207,
     priceSuffix: "Par Titre",
     tagline: "La formule Business PRO",
     features: [
@@ -72,19 +58,10 @@ const pricingPlans = [
     ctaText: "Prendre RDV",
     accentColor: "text-teal-400",
     isFeatured: false,
-    promoPrice: 167,
-    promoEndDate: getTomorrowEndOfDayIso(),
-    promoText: "PROMO",
   },
 ];
 
 const PricingCard = ({ plan }: { plan: (typeof pricingPlans)[0] }) => {
-  const now = Date.now();
-  const promoActive =
-    plan.promoPrice &&
-    plan.promoEndDate &&
-    now < new Date(plan.promoEndDate).getTime();
-
   return (
     <div
       className={`bg-zinc-800 p-6 md:p-8 rounded-xl shadow-xl border border-zinc-700 hover:border-zinc-600 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-2xl ${
@@ -138,29 +115,8 @@ const PricingCard = ({ plan }: { plan: (typeof pricingPlans)[0] }) => {
         className="my-4 flex items-center space-x-2"
         style={{ minHeight: "80px" }}
       >
-        {promoActive ? (
-          <>
-            <span className="text-5xl font-bold text-white">
-              {plan.promoPrice}€
-            </span>
-            <span className="text-sm text-zinc-400 ml-1">
-              {plan.priceSuffix}
-            </span>
-            <span className="ml-2 px-2 py-1 bg-pink-500 text-white text-xs font-bold rounded">
-              {plan.promoText || "PROMO"}
-            </span>
-            <span className="text-zinc-400 line-through ml-3 text-2xl">
-              {plan.price}€
-            </span>
-          </>
-        ) : (
-          <>
-            <span className="text-5xl font-bold text-white">{plan.price}€</span>
-            <span className="text-sm text-zinc-400 ml-1">
-              {plan.priceSuffix}
-            </span>
-          </>
-        )}
+        <span className="text-5xl font-bold text-white">{plan.price}€</span>
+        <span className="text-sm text-zinc-400 ml-1">{plan.priceSuffix}</span>
       </div>
 
       {/* Section 4: Tagline - hauteur fixe */}

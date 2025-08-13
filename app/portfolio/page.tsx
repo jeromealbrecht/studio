@@ -16,6 +16,15 @@ const portfolioData: PortfolioCategory[] = [
   {
     categoryTitle: "Production Musicale",
     references: [
+      {
+        id: "single-jejouzz",
+        title: "Introstalgie",
+        subtitle: "Jejouzz",
+        videoUrl: "https://www.youtube.com/watch?v=NMZapj8n_YQ",
+        description:
+          "Enregistrement voix, arrangements, mixage et mastering analogique.",
+        tags: ["Hiphop", "EP", "Mastering Analogique"],
+      },
       // ... existing production musicale items ...
       // {
       //   id: "rock-band-album",

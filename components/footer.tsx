@@ -28,7 +28,7 @@ export default function Footer() {
 
   const servicesLinks = [
     { href: "/tarifs", label: "Nos Tarifs" },
-    { href: "#contact", label: "Contact" },
+    { href: "mailto:ecrire@couleurdeson.fr", label: "Contact" },
     { href: "#devis", label: "Devis Gratuit" },
   ];
 
@@ -43,7 +43,7 @@ export default function Footer() {
       label: "YouTube",
       icon: Youtube,
     },
-    { href: "mailto:contact@couleurdesson.fr", label: "Email", icon: Mail },
+    { href: "mailto:ecrire@couleurdeson.fr", label: "Email", icon: Mail },
   ];
 
   return (

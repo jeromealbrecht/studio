@@ -75,6 +75,15 @@ export default function ReservationPage() {
         <h1 className="text-4xl md:text-5xl font-bold">
           Réservez votre <span className="text-[#d4af37]">Session</span>
         </h1>
+
+        {/* hs2 ou contactez-nous */}
+        <h2 className="text-2xl font-semibold text-white">
+          Ou contactez-nous par email sur{" "}
+          <a href="mailto:ecrire@couleurdeson.fr" className="text-[#d4af37]">
+            ecrire@couleurdeson.fr
+          </a>
+        </h2>
+
         <p className="text-zinc-400 mt-4 text-lg max-w-2xl mx-auto">
           Suivez les étapes pour nous fournir les détails de votre projet. C'est
           simple et rapide.
